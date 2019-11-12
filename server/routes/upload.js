@@ -54,6 +54,8 @@ app.put('/upload/:type/:id', (req, res) => {
         });
     }
 
+    createFolders(type);
+
     // cambiar nombre del archivo
     let newNameFile = `${ id }-${ new Date().getMilliseconds() }.${ fileExt }`;
 
@@ -167,5 +169,30 @@ function deleteFile(nameFile, type, ) {
         fs.unlinkSync(pathImg);
     }
 }
+
+function createFolders(tipo){
+
+    try {
+        fs.mkdirSync(path.resolve(__dirname, `../../uploads`));
+    } catch (err) {
+        if (err.code !== 'EEXIST') {
+            return res.status(500).json({
+                ok: false,
+                error: err
+            });
+        }
+    }
+    try {
+        fs.mkdirSync(path.resolve(__dirname, `../../uploads/${tipo}`));
+    } catch (err) {
+        if (err.code !== 'EEXIST') {
+            return res.status(500).json({
+                ok: false,
+                error: err
+            });
+        }
+    }
+
+};
 
 module.exports = app;
