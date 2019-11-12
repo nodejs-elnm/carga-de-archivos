@@ -46,7 +46,32 @@ let verifyRole = ( req, res, next ) => {
 };
 
 
+let verifyTokenImg = (req, res, next) => {
+
+    let token = req.query.token;
+
+    jwt.verify(token, process.env.SEED, (err, decoded) => {
+
+        if (err) {
+            return res.status(400).json({
+                ok: false,
+                err: {
+                    msg: 'TOKEN no válido'
+                }
+            });
+        }
+
+        req.user = decoded.user;
+        next();
+
+    });
+
+};
+
+
 module.exports = {
     verifyToken,
-    verifyRole
+    verifyRole,
+    verifyTokenImg
+
 };
