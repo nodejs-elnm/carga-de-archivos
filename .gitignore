@@ -8,7 +8,7 @@
 
 ## mis directorios de server
 uploads/products/
-uploads/users
+uploads/users/
 
 # temporary files which can be created if a process still has a handle open of a deleted file
 .fuse_hidden*
