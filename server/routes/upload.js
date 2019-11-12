@@ -193,6 +193,6 @@ function createFolders(tipo){
         }
     }
 
-};
+}
 
 module.exports = app;
