@@ -25,7 +25,6 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.7.7",
     "mongoose-unique-validator": "^2.0.3",
-    "node-pre-gyp": "^0.14.0",
     "underscore": "^1.9.1"
   }
 }
